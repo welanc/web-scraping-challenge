@@ -9,14 +9,87 @@
   <!-- Bootstrap CSS Stylesheet -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+  <style>
+    /* Styling for HTML elements */
+    body {
+      padding: 0;
+      margin: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      line-height: 150%;
+      color: #333;
+      background: #f5c8bc;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: maroon;
+      font-family: Helvetica, Arial, sans-serif;
+    }
+
+    h1 {
+      padding: 20px 0;
+      margin: 0;
+      margin-bottom: 20px;
+      font-weight: bolder;
+      font-size: 48px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    h3 {
+      margin-top: 30px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* Selecting elements by class */
+
+    .jumbotron {
+      padding: 2rem 1rem;
+      margin-bottom: 2rem;
+      background-color: #f35336;
+      border-radius: .3rem;
+    }
+
+    .main-content,
+    .sidebar {
+      position: relative;
+      margin-top: 50px;
+      background: white;
+      padding: 30px;
+    }
+
+
+    /* Responsive table container for data table 
+   to avoid overrun on smaller resolutions */
+    .table-responsive {
+      overflow-y: scroll;
+      height: 500px;
+    }
+
+    /* Column headers to remain visible all the time */
+    .table-responsive thead th {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      border-bottom: 1px;
+      border-color: black;
+    }
+  </style>
 </head>
 
 <body>
   <div class="container-fluid">
-    <div class="jumbotron text-center"
-      style="padding: 2rem 1rem; margin-bottom: 2rem; background-color: #e9ecef; border-radius: .3rem;">
+    <div class="jumbotron text-center">
       <h1>Mission to Mars</h1>
-      <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
+      <p><a class="btn btn-outline-warning btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
     </div>
 
     <!-- Featured Image -->
@@ -29,86 +102,92 @@
         {% endfor %}
       </div>
 
-
       <!-- Featured Image -->
       <div class="row">
         <div class="col-md-8">
           <h2>Featured Mars Image</h2>
-          <img src="{{ mars_info.featured_image_url }}" alt="Features Mars Image">
+          <a href="{{ mars_info.featured_image_url }}" target="_blank"><img id="article-image"
+              src="{{ mars_info.featured_image_url }}" alt="Features Mars Image"></a>
         </div>
 
         <!-- Table Facts -->
         <div class="col-md-4">
-          <table border="1" class="dataframe">
-            <thead>
-              <tr style="text-align: right;">
-                <th>Description</th>
-                <th>Mars</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Equatorial Diameter:</td>
-                <td>6,792 km</td>
-              </tr>
-              <tr>
-                <td>Polar Diameter:</td>
-                <td>6,752 km</td>
-              </tr>
-              <tr>
-                <td>Mass:</td>
-                <td>6.39 × 10^23 kg (0.11 Earths)</td>
-              </tr>
-              <tr>
-                <td>Moons:</td>
-                <td>2 (Phobos &amp; Deimos)</td>
-              </tr>
-              <tr>
-                <td>Orbit Distance:</td>
-                <td>227,943,824 km (1.38 AU)</td>
-              </tr>
-              <tr>
-                <td>Orbit Period:</td>
-                <td>687 days (1.9 years)</td>
-              </tr>
-              <tr>
-                <td>Surface Temperature:</td>
-                <td>-87 to -5 °C</td>
-              </tr>
-              <tr>
-                <td>First Record:</td>
-                <td>2nd millennium BC</td>
-              </tr>
-              <tr>
-                <td>Recorded By:</td>
-                <td>Egyptian astronomers</td>
-              </tr>
-            </tbody>
-          </table>
-
+          <h3>Mars Facts</h3>
+          <div class="table responsive">
+            <table class="table table-striped table-hover">
+              <thead class="thead-light">
+                <tr style="text-align: right;">
+                  <th>Description</th>
+                  <th>Mars</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Equatorial Diameter:</td>
+                  <td>6,792 km</td>
+                </tr>
+                <tr>
+                  <td>Polar Diameter:</td>
+                  <td>6,752 km</td>
+                </tr>
+                <tr>
+                  <td>Mass:</td>
+                  <td>6.39 × 10^23 kg (0.11 Earths)</td>
+                </tr>
+                <tr>
+                  <td>Moons:</td>
+                  <td>2 (Phobos &amp; Deimos)</td>
+                </tr>
+                <tr>
+                  <td>Orbit Distance:</td>
+                  <td>227,943,824 km (1.38 AU)</td>
+                </tr>
+                <tr>
+                  <td>Orbit Period:</td>
+                  <td>687 days (1.9 years)</td>
+                </tr>
+                <tr>
+                  <td>Surface Temperature:</td>
+                  <td>-87 to -5 °C</td>
+                </tr>
+                <tr>
+                  <td>First Record:</td>
+                  <td>2nd millennium BC</td>
+                </tr>
+                <tr>
+                  <td>Recorded By:</td>
+                  <td>Egyptian astronomers</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+
       </div>
 
       <!-- Mars Hemispheres -->
-      <aside class="row">
-        <section class="sidebar">
-          <h2>Mars Hemispheres</h2>
-          <hr>
-          {% for hemi in mars_info.hemisphere_image_urls %}
-          <div class="col-md-3">
-            <div class="card" style="width: 18rem;">
-              <img src="{{ hemi.img_url }}" class="card-img-top" alt="{{ hemi.title }}">
-              <div class="card-body">
-                <p class="card-text">{{ hemi.title }}
-                </p>
-              </div>
+      <div class="row">
+
+
+        <h2>Mars Hemispheres</h2>
+        <hr>
+
+        {% for hemi in mars_info.hemisphere_image_urls %}
+        <div class="col-md-6" style="display:inline-block">
+          <div class="card">
+            <a href="{{ hemi.img_url }}" target="_blank"><img src="{{ hemi.img_url }}" class="card-img-top"
+                alt="{{ hemi.title }}"></a>
+            <div class="card-body">
+              <p class="card-text">{{ hemi.title }}
+              </p>
             </div>
           </div>
-          {% endfor %}
+        </div>
+        {% endfor %}
 
 
-        </section>
-      </aside>
+
+      </div>
     </div>
 
 
