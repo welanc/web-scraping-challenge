@@ -10,4 +10,4 @@
 
 3. **Note**: `mission_to_mars.ipynb` was exported from Jupyter Notebook to a file named `mission_to_mars.py`. Relevant portions of the code were copied and pasted into `scrape_mars.py` as the direct export from Jupyter Notebook had superfluous lines of code related to running the code in Jupyter Notebook. The original export is in the directory [Mission_to_Mars/superseded](https://github.com/welanc/web-scraping-challenge/tree/master/Missions_to_Mars/superseded).
 
-4. The template file `index.html` used to show the Flask Application output is in the directory [Mission_to_Mars/templates](https://github.com/welanc/web-scraping-challenge/tree/master/Missions_to_Mars/templates).
+4. The template file `index.html` used to run the Flask Application output and `data.html` used to display the Flask Application scraped data are both in the directory [Mission_to_Mars/templates](https://github.com/welanc/web-scraping-challenge/tree/master/Missions_to_Mars/templates).

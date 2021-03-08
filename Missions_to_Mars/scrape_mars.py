@@ -81,15 +81,16 @@ def scrape():
 
     # URL of Space Facts page to be scraped
     facts_url = "https://space-facts.com/mars/"
+    
+    # Get all tables in URL via pandas
+    tables = pd.read_html(facts_url)
 
-    # # Get all tables in URL via pandas
-    # tables = pd.read_html(facts_url)
+    # Save relevant table as DataFrame and export to html
+    df = tables[0]
+    df = df.rename(columns={0:"Description",1:"Mars"})
+    mars_table = df.to_html(index=False)
 
-    # # Save relevant table as DataFrame and export to html
-    # df = tables[0]
-    # df = df.rename(columns={0:"Description",1:"Mars"})
-    # df.to_html('table.html', index=False)
-
+    # URL of Mars Hemispheres to be scraped
     hemi_url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
 
     # Retrieve page in splinter browser
@@ -153,9 +154,10 @@ def scrape():
     mars_data = {
         "headers": headers,
         "preview_texts": preview_texts,
-        "featured_image_url": featured_image_url,
+        "featured_image_url": featured_image_url, 
+        "mars_table": mars_table,
         "hemispheres": hemispheres,
-        "hemisphere_image_urls": hemisphere_image_urls
+        "hemisphere_image_urls": hemisphere_image_urls,
     }
 
     # Close the browser after scraping

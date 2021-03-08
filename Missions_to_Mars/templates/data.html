@@ -88,9 +88,65 @@
 <body>
   <div class="container-fluid">
     <div class="jumbotron text-center">
-      <h1>{{ title }}</h1>
+      <h1>Mission to Mars</h1>
       <p><a class="btn btn-outline-warning btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
     </div>
+
+    <!-- Latest Headline -->
+    <div class="row">
+      <div class="col">
+        <h2>Latest Mars News</h2>
+        {% for i in range(1) %}
+        <h3>{{ mars_info.headers[i] }}</h3>
+        <p>{{ mars_info.preview_texts[i] }}</p>
+        {% endfor %}
+      </div>
+
+      <!-- Featured Image -->
+      <div class="row">
+        <div class="col-md-8">
+          <h2>Featured Mars Image</h2>
+          <a href="{{ mars_info.featured_image_url }}" target="_blank"><img id="article-image"
+              src="{{ mars_info.featured_image_url }}" alt="Features Mars Image"></a>
+        </div>
+
+        <!-- Table Facts -->
+        <div class="col-md-4">
+          <h3>Mars Facts</h3>
+          <div class="table responsive">
+
+            {{ mars_info.mars_table | safe }}
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Mars Hemispheres -->
+      <div class="row">
+
+
+        <h2>Mars Hemispheres</h2>
+        <hr>
+
+        {% for hemi in mars_info.hemisphere_image_urls %}
+        <div class="col-md-6" style="display:inline-block">
+          <div class="card">
+            <a href="{{ hemi.img_url }}" target="_blank"><img src="{{ hemi.img_url }}" class="card-img-top"
+                alt="{{ hemi.title }}"></a>
+            <div class="card-body">
+              <p class="card-text">{{ hemi.title }}
+              </p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+
+
+
+      </div>
+    </div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
